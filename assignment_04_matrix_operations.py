@@ -60,3 +60,43 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+
+def transpose_matrix(matrix):
+    rows = len(matrix)
+    cols = len(matrix[0])
+    transposed = [[0 for _ in range(rows)] for _ in range(cols)]
+    for i in range(rows):
+        for j in range(cols):
+            transposed[j][i] = matrix[i][j]
+    return transposed
+
+def add_matrices(matrix_a, matrix_b):
+    rows = len(matrix_a)
+    cols = len(matrix_a[0])
+    result = [[0 for _ in range(cols)] for _ in range(rows)]
+    for i in range(rows):
+        for j in range(cols):
+            result[i][j] = matrix_a[i][j] + matrix_b[i][j]
+    return result
+
+def multiply_matrices(matrix_a, matrix_b):
+    rows_a = len(matrix_a)
+    cols_a = len(matrix_a[0])
+    cols_b = len(matrix_b[0])
+    result = [[0 for _ in range(cols_b)] for _ in range(rows_a)]
+    for i in range(rows_a):
+        for j in range(cols_b):
+            for k in range(cols_a):
+                result[i][j] += matrix_a[i][k] * matrix_b[k][j]
+    return result
+
+def read_matrix(name):
+    print(f"\nEntering {name}:")
+    rows = int(input("Enter number of rows: "))
+    cols = int(input("Enter number of columns: "))
+    matrix = []
+    for i in range(rows):
+        row_input = input(f"Enter row {i + 1}: ")
+        row_values = [float(val) for val in row_input.split()]
+        matrix.append(row_values)
+    return matrix
