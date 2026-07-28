@@ -133,3 +133,54 @@ def display_students(students):
         print(f"{name:<15} {student_id:<12} {scores_str:<15} {average_str:<8}")
         
     print("-" * 50)
+
+
+def calculate_student_average(students):
+    if len(students) == 0:
+        print("No student records available.")
+        return
+        
+    search_id = input("Enter student ID: ")
+    found_student = None
+    
+    for student in students:
+        if student["id"] == search_id:
+            found_student = student
+            break
+            
+    if found_student is None:
+        print(f"Error: Student ID {search_id} not found.")
+    else:
+        if len(found_student["scores"]) > 0:
+            average = sum(found_student["scores"]) / len(found_student["scores"])
+            print(f"{found_student['name']}'s average score: {average:.2f}")
+        else:
+            print(f"{found_student['name']} has no scores recorded.")
+
+def display_menu():
+    print("\n================================")
+    print("    STUDENT RECORD SYSTEM MENU")
+    print("================================")
+    print("1. Add student")
+    print("2. Display all students")
+    print("3. Calculate average score")
+    print("4. Quit")
+
+if __name__ == "__main__":
+    student_records = []
+    
+    while True:
+        display_menu()
+        choice = input("Enter your choice (1-4): ")
+        
+        if choice == "1":
+            add_student(student_records)
+        elif choice == "2":
+            display_students(student_records)
+        elif choice == "3":
+            calculate_student_average(student_records)
+        elif choice == "4":
+            print("Goodbye!")
+            break
+        else:
+            print("Error: Invalid choice. Please enter a number between 1 and 4.")    
