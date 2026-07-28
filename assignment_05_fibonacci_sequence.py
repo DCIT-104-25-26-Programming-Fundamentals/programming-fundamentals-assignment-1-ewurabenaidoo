@@ -49,3 +49,14 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+def generate_fibonacci(n):
+    if n <= 0:
+        return None
+    elif n == 1:
+        return [0]
+    
+    sequence = [0, 1]
+    for _ in range(2, n):
+        next_value = sequence[-1] + sequence[-2]
+        sequence.append(next_value)
+    return sequence
