@@ -60,3 +60,33 @@ def generate_fibonacci(n):
         next_value = sequence[-1] + sequence[-2]
         sequence.append(next_value)
     return sequence
+
+def is_fibonacci(number):
+    if number < 0:
+        return False
+    
+    a = 0
+    b = 1
+    while a < number:
+        a, b = b, a + b
+    
+    return a == number
+
+if __name__ == "__main__":
+    print("--- PART A: Generate Fibonacci Sequence ---")
+    terms_input = int(input("How many terms? "))
+    
+    if terms_input <= 0:
+        print("Error: Number of terms must be a positive integer.")
+    else:
+        fib_sequence = generate_fibonacci(terms_input)
+        sequence_str = " ".join(str(val) for val in fib_sequence)
+        print(f"Fibonacci sequence: {sequence_str}")
+        
+    print("\n--- PART B: Check Fibonacci Number ---")
+    check_input = int(input("Enter a number to check: "))
+    
+    if is_fibonacci(check_input):
+        print(f"{check_input} is a Fibonacci number.")
+    else:
+        print(f"{check_input} is NOT a Fibonacci number.")
