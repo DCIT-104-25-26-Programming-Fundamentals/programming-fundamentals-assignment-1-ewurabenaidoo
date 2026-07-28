@@ -35,3 +35,13 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+
+def is_prime(number):
+    if number < 2:
+        return False
+    
+    for current_divisor in range(2, int(number ** 0.5) + 1):
+        if number % current_divisor == 0:
+            return False
+            
+    return True
