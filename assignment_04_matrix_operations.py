@@ -100,3 +100,39 @@ def read_matrix(name):
         row_values = [float(val) for val in row_input.split()]
         matrix.append(row_values)
     return matrix
+
+def print_matrix(matrix):
+    for row in matrix:
+        formatted_row = "  ".join(f"{int(val) if val.is_integer() else val}" for val in row)
+        print(f"  {formatted_row}")
+
+if __name__ == "__main__":
+    print("--- PART A: Transpose a Matrix ---")
+    matrix_orig = read_matrix("Matrix")
+    print("\nOriginal Matrix:")
+    print_matrix(matrix_orig)
+    transposed_result = transpose_matrix(matrix_orig)
+    print("\nTransposed Matrix:")
+    print_matrix(transposed_result)
+    
+    print("\n--- PART B: Add Two Matrices ---")
+    print("For addition, both matrices must have the same dimensions.")
+    matrix_b1 = read_matrix("Matrix 1")
+    matrix_b2 = read_matrix("Matrix 2")
+    if len(matrix_b1) != len(matrix_b2) or len(matrix_b1[0]) != len(matrix_b2[0]):
+        print("Error: Matrices must have the same dimensions for addition.")
+    else:
+        addition_result = add_matrices(matrix_b1, matrix_b2)
+        print("\nSum Matrix:")
+        print_matrix(addition_result)
+        
+    print("\n--- PART C: Multiply Two Matrices ---")
+    print("For multiplication, columns of Matrix A must equal rows of Matrix B.")
+    matrix_m1 = read_matrix("Matrix A")
+    matrix_m2 = read_matrix("Matrix B")
+    if len(matrix_m1[0]) != len(matrix_m2):
+        print("Error: Number of columns in Matrix A must equal number of rows in Matrix B.")
+    else:
+        multiplication_result = multiply_matrices(matrix_m1, matrix_m2)
+        print("\nProduct Matrix:")
+        print_matrix(multiplication_result)
