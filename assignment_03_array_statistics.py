@@ -69,3 +69,25 @@ def find_minimum(numbers):
         if num < min_value:
             min_value = num
     return min_value
+
+if __name__ == "__main__":
+    count = int(input("How many numbers? "))
+    
+    if count <= 0:
+        print("Error: Number count must be a positive integer.")
+    else:
+        number_list = []
+        for index in range(count):
+            current_number = float(input(f"Enter number {index + 1}: "))
+            number_list.append(current_number)
+            
+        total_sum = calculate_sum(number_list)
+        average_value = calculate_average(number_list)
+        maximum_value = find_maximum(number_list)
+        minimum_value = find_minimum(number_list)
+        
+        print("\nResults:")
+        print(f"Sum:     {total_sum}")
+        print(f"Average: {average_value}")
+        print(f"Maximum: {maximum_value}")
+        print(f"Minimum: {minimum_value}")
