@@ -70,3 +70,21 @@ def print_tables_up_to_n(n):
         print_single_table(current_number)
         if current_number < n:
             print("---------------------------")
+
+
+if __name__ == "__main__":
+    print("--- PART A: Single Table ---")
+    single_input = int(input("Enter a number: "))
+    if single_input <= 0:
+        print("Error: Number must be a positive integer.")
+    else:
+        print_single_table(single_input)
+        
+    print("\n--- PART B: Tables from 1 to N ---")
+    n_input = int(input("Enter a number N: "))
+    if n_input <= 0:
+        print("Error: N must be a positive integer.")
+    else:
+        print_tables_up_to_n(n_input)
+
+            
