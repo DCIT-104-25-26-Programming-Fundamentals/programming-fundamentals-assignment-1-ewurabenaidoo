@@ -90,3 +90,46 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+
+
+def add_student(students):
+    name = input("Student name: ")
+    student_id = input("Student ID: ")
+    
+    score_count = int(input("How many scores? "))
+    scores = []
+    for i in range(score_count):
+        score = float(input(f"Enter score {i + 1}: "))
+        scores.append(score)
+        
+    student_record = {
+        "name": name,
+        "id": student_id,
+        "scores": scores
+    }
+    students.append(student_record)
+    print(f'Student "{name}" added successfully.')
+
+def display_students(students):
+    if len(students) == 0:
+        print("No students have been added yet.")
+        return
+        
+    print("-" * 50)
+    print(f"{'Name':<15} {'ID':<12} {'Scores':<15} {'Average':<8}")
+    print("-" * 50)
+    
+    for student in students:
+        name = student["name"]
+        student_id = student["id"]
+        scores_str = ", ".join(str(score) for score in student["scores"])
+        
+        if len(student["scores"]) > 0:
+            average = sum(student["scores"]) / len(student["scores"])
+            average_str = f"{average:.2f}"
+        else:
+            average_str = "0.00"
+            
+        print(f"{name:<15} {student_id:<12} {scores_str:<15} {average_str:<8}")
+        
+    print("-" * 50)
