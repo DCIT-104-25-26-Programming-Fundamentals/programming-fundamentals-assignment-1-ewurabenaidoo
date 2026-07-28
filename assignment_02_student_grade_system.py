@@ -58,3 +58,12 @@ def get_grade(score):
         return "D"
     else:
         return "F"
+
+if __name__ == "__main__":
+    user_input = int(input("Enter student score (0-100): "))
+    result = get_grade(user_input)
+    
+    if result is None:
+        print("Error: Score must be between 0 and 100.")
+    else:
+        print(f"Grade: {result}")    
