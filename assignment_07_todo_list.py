@@ -79,3 +79,32 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+
+def add_task(tasks):
+    task_description = input("Enter task: ")
+    tasks.append(task_description)
+    print(f'Task added: "{task_description}"')
+
+def view_tasks(tasks):
+    if len(tasks) == 0:
+        print("Your task list is empty.")
+    else:
+        print("Your Tasks:")
+        for index, task in enumerate(tasks, start=1):
+            print(f"{index}. {task}")
+
+def delete_task(tasks):
+    if len(tasks) == 0:
+        print("Your task list is empty. No tasks to delete.")
+        return
+        
+    view_tasks(tasks)
+    try:
+        task_number = int(input("Enter task number to delete: "))
+        if 1 <= task_number <= len(tasks):
+            removed_task = tasks.pop(task_number - 1)
+            print(f'Task "{removed_task}" has been removed.')
+        else:
+            print("Error: Invalid task number.")
+    except ValueError:
+        print("Error: Please enter a valid number.")
