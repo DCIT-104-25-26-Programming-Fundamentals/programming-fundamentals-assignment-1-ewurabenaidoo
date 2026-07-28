@@ -45,3 +45,11 @@ def is_prime(number):
             return False
             
     return True
+
+if __name__ == "__main__":
+    user_input = int(input("Enter a number: "))
+    
+    if is_prime(user_input):
+        print(f"{user_input} is a prime number.")
+    else:
+        print(f"{user_input} is NOT a prime number.")
